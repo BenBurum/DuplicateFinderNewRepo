@@ -32,6 +32,7 @@ super.tearDown();
 @org.junit.Test
 public void testMain() throws Exception { 
 //TODO: Test goes here...
+    assert true;
 
 } 
 
