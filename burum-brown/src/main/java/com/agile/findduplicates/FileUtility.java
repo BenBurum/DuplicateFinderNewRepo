@@ -1,12 +1,15 @@
 package com.agile.findduplicates;
 
-import com.sun.javafx.tools.packager.Log;
+//import com.sun.javafx.tools.packager.Log;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.zip.CRC32;
 
 /**
@@ -37,6 +40,26 @@ public class FileUtility {
     }
 
     /**
+     * Overloaded Constructor to be called by the Swing panel.  Sets directory variable to the directory
+     * specified by the user.
+     *
+     * @param dirPath
+     * @throws Exception
+     */
+    private FileUtility(String dirPath) throws Exception {
+        String homeDir = dirPath;
+        if (!homeDir.isEmpty()) {
+            directory = new File(homeDir);
+            if (!directory.isDirectory()) {
+                throw new Exception();
+            }
+        }
+        else {
+            throw new Exception();
+        }
+    }
+
+    /**
      * Accessor method for the class.
      *
      * @return The singleton instance of FileUtility.
@@ -49,7 +72,8 @@ public class FileUtility {
                 INSTANCE = new FileUtility();
                 return INSTANCE;
             } catch (Exception e) {
-                Log.debug("Home directory not defined");
+                System.out.println("Directory not defined");
+                // Log.debug("Home directory not defined");
                 return null;
             }
         }
