@@ -10,4 +10,12 @@ public class FinderPanel {
     private JTree tree1;
     private JTextArea textArea1;
     private JButton analyzeButton;
+
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("FinderPanel");
+        frame.setContentPane(new FinderPanel().panel1);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+    }
 }
