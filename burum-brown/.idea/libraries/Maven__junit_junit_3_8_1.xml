@@ -2,9 +2,9 @@
   <library name="Maven: junit:junit:3.8.1">
     <CLASSES>
       <root url="jar://$MAVEN_REPOSITORY$/junit/junit/3.8.1/junit-3.8.1.jar!/" />
-      <root url="jar://$APPLICATION_HOME_DIR$/lib/jgoodies-common-1.2.1.jar!/" />
-      <root url="jar://$APPLICATION_HOME_DIR$/lib/jgoodies-forms.jar!/" />
-      <root url="jar://$APPLICATION_HOME_DIR$/lib/jgoodies-looks-2.4.2.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/jgoodies/jgoodies-common-1.2.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/jgoodies/jgoodies-forms.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/jgoodies/jgoodies-looks-2.4.2.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$MAVEN_REPOSITORY$/junit/junit/3.8.1/junit-3.8.1-javadoc.jar!/" />
