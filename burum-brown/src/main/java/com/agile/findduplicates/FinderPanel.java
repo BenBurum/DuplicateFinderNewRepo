@@ -9,7 +9,7 @@ import java.lang.reflect.Array;
 import java.util.*;
 
 /**
- * Created by Ben Burum and Eric Brown as a group project for Java308 with Spencer Marks at Umass Lowell.
+ * Created by Ben on 10/4/2014.
  */
 public class FinderPanel extends JPanel {
     private JPanel panel1;
