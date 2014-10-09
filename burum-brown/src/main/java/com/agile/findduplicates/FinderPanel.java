@@ -6,10 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.lang.reflect.Array;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by Ben on 10/4/2014.
@@ -18,15 +15,16 @@ public class FinderPanel extends JPanel {
     private JPanel panel1;
     private JTree duplicatesTree;
     private JTextArea outputTextArea;
-    private JButton analyzeButton;
+    private JButton listFilesButton;
     private JButton ignoreButton;
     private JButton deleteButtion;
     private JScrollPane scrollPane1;
     private JTextField dirPathTextField;
     private JCheckBox fullNameCheckBox;
     private JCheckBox checksumCheckBox;
-    private JCheckBox findRecursivelyCheckBox;
-    private Map duplicatesMap;
+    private JCheckBox recursiveCheckBox;
+    private JButton analyzeButton;
+    private Map fullNameDupesMap;
 
 
     /**
@@ -34,16 +32,37 @@ public class FinderPanel extends JPanel {
      */
     public FinderPanel() {
 
-        analyzeButton.addActionListener(new ActionListener() {
+        listFilesButton.addActionListener(new ActionListener() {
 
+            /**
+             * Action performed when the List Files button is pressed.
+             * @param e
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
+                outputTextArea.setText("");
 
                 try {
                     ArrayList<File> filesList = new ArrayList<File>();
                     File dirFile = new File(dirPathTextField.getText());
-                    filesList = listFilesRecursive(dirFile, filesList);
-                    System.out.println(filesList.toString());
+
+                    //Checks whether to find files recursively or not, and then sets the ArrayList filesList to the result.
+                    if (recursiveCheckBox.isSelected()){
+                        filesList = listFilesRecursive(dirFile, filesList);
+                    }
+                    else {
+                        File[] fileList = dirFile.listFiles();
+                        for (File file : fileList){
+                            filesList.add(file);
+                        }
+                    }
+
+                    //Prints each file.toString() on its own line.
+                    outputTextArea.append("List of files:\n\n" );
+                    for (File file : filesList) {
+                        outputTextArea.append(file.toString() + "\n");
+                    }
+
 //                    if (fullNameCheckBox.isSelected()) {
 //                        try {
 //                            findDuplicatesFullName(dirPathTextField.getText());
@@ -52,54 +71,82 @@ public class FinderPanel extends JPanel {
 //                        }
 //                    }
                     System.out.println("You pressed the button!");
-                }catch(Exception ex){
+                } catch (Exception ex) {
+                    System.err.println("Error analyzing directory: " + e);
+                }
+            }
+        });
+
+        /**
+         * Action performed when the Analyze button is pressed.
+         */
+        analyzeButton.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+
+                try {
+                    ArrayList<File> filesList = new ArrayList<File>();
+                    File dirFile = new File(dirPathTextField.getText());
+
+                    //Checks whether to find files recursively or not, and then sets the ArrayList filesList to the result.
+                    if (recursiveCheckBox.isSelected()){
+                        filesList = listFilesRecursive(dirFile, filesList);
+                    }
+                    else {
+                        File[] fileList = dirFile.listFiles();
+                        for (File file : fileList){
+                            filesList.add(file);
+                        }
+                    }
+
+                        if (fullNameCheckBox.isSelected()){                                       //If the "Name w/ Extension box is checked.
+                              HashMap fullNameDupes = findDuplicatesFullName(filesList);
+                              System.out.println("Full Name Hashmap created.");
+                            outputTextArea.append(fullNameDupes.toString());
+                            createUIComponents(fullNameDupes);
+                        }
+
+
+                    System.out.println("You pressed the button!");
+                } catch (Exception ex) {
                     System.err.println("Error analyzing directory: " + e);
                 }
             }
         });
     }
 
-//    private Map<File, String> findDuplicatesFullName(String dirPath) {
-//        try {
-//            duplicatesMap = new HashMap<File, String>();
-//            File path = new File(dirPath);
-//            File[] files = path.listFiles();
-//            ArrayList<File> filesList;
-//            ArrayList<File> filesCopy = new ArrayList<File>();
-//
-//            try {
-//                filesList = listFilesRecursive(path);
-//                System.out.println(filesList);
-//            }catch (Exception ex){
-//                System.out.println("Error creating filesCopy: " + ex);
-//            }
-////            while (filesCopy.size() != 0){
-////            for (File file : files) {
-////                Map filesMap = new HashMap<File, Path>();
-////                for (File copyFile : filesCopy) {
-////
-////                        if (file.getName().equals(copyFile.getName()) && (file.length() == (copyFile.length()))) {
-////                            filesMap.put(file, file.getAbsolutePath());
-////                            filesCopy.remove(copyFile);
-////                            duplicatesMap.add(filesMap);
-////                        }
-////                    }
-////
-////                }
-////            }
-//            System.out.println("findDuplicatesFullName run successfully: duplicatesMap = " + duplicatesMap);
-//            return duplicatesMap;
-//
-//        }catch (Exception ex){
-//            System.out.println("Error matching by full File Name from within Method: " + ex);
-//            return duplicatesMap;
-//        }
-//
-//
-//    }
+    /**
+     * Takes an ArrayList of Files as a parameter and returns a HashMap with (String) Filenames as the keys and ArrayLists of
+     * Files as the values.  Each key-value pair corresponds to Filename -> List of files with that name.
+     * @param filesList
+     * @return
+     */
+    private HashMap<String, ArrayList<File>> findDuplicatesFullName(ArrayList<File> filesList){
+        ArrayList<File> copyList = filesList;
+        HashMap fileInstanceMap = new HashMap<String, ArrayList<File>>();
+        for (File f : filesList){
+            ArrayList<File> dupeList = new ArrayList<File>();
+            String fName = f.getName();
+            for (File copyFile : copyList){
+                String copyName = copyFile.getName();
+                if (copyName.equals(fName)){
+                    dupeList.add(copyFile);
+                }
+            }
+            fileInstanceMap.put(fName, dupeList);
+        }
+
+        return fileInstanceMap;
+
+    }
+
+
 
     /**
-     * Takes a directory and an ArrayList (initially should be empty) as input and returns an ArrayList of every file in the directory, recursively.
+     * Takes a directory and an ArrayList (initially should be empty) as input and returns an ArrayList of every
+     * file in the directory, recursively.
      *
      * @param dir
      * @return
@@ -119,10 +166,10 @@ public class FinderPanel extends JPanel {
             }
         }
         else {
-            System.err.println("Error: listFilesRecursive called on invalid target: " + dir);
+            outputTextArea.append("\nError: listFilesRecursive called on invalid target:\n" + dir + "\nCheck the path entered into the field above.\n");
         }
 
-
+        Collections.reverse(recursiveList);
         return recursiveList;
     }
 
@@ -142,7 +189,18 @@ public class FinderPanel extends JPanel {
      */
     private void createUIComponents() {
 
+
         populateFileTree();
+
+
+        //duplicatesTree = new DuplicatesFileTree();
+        //duplicateFileTree = new javax.swing.JTree(populateJTree.addNodes(null, null));
+    }
+
+    private void createUIComponents(HashMap map) {
+
+
+        populateFileTree(map);
 
 
         //duplicatesTree = new DuplicatesFileTree();
@@ -159,6 +217,26 @@ public class FinderPanel extends JPanel {
         //create the child nodes
         DefaultMutableTreeNode vegetableNode = new DefaultMutableTreeNode("TestFile1");
         DefaultMutableTreeNode fruitNode = new DefaultMutableTreeNode("TestFile2");
+
+        //add the child nodes to the root node
+        root.add(vegetableNode);
+        root.add(fruitNode);
+
+        //create the tree by passing in the root node
+        duplicatesTree = new JTree(root);
+        add(duplicatesTree);
+    }
+
+    /**
+     * Failed attempt to repopulate the JTree when passed a HashMap.
+     * @param dupesMap
+     */
+    public void populateFileTree(HashMap dupesMap){
+        //create the root node
+        DefaultMutableTreeNode root = new DefaultMutableTreeNode("Checksum2");
+        //create the child nodes
+        DefaultMutableTreeNode vegetableNode = new DefaultMutableTreeNode("TestFile2");
+        DefaultMutableTreeNode fruitNode = new DefaultMutableTreeNode("TestFile3");
 
         //add the child nodes to the root node
         root.add(vegetableNode);
