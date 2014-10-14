@@ -19,6 +19,8 @@ import sun.plugin.dom.exception.InvalidStateException;
  */
 public class NavigationalFileManager implements FileManager {
 
+    private static FileManager FM_instance;
+
     private File directory;
 
     /**
@@ -68,7 +70,7 @@ public class NavigationalFileManager implements FileManager {
      *
      * @return A string array of the names of the files in the current directory.
      */
-    public String[] ls () {
+    public synchronized String[] ls () {
         return directory.list();
     }
 
@@ -77,7 +79,7 @@ public class NavigationalFileManager implements FileManager {
      *
      * @param dir The File that will become the new active directory. If the file is not a directory, no changes will be made.
      */
-    public void cd (File dir) {
+    public synchronized void cd (File dir) {
         if (dir.isDirectory()) {
             directory = dir;
         }
@@ -88,14 +90,14 @@ public class NavigationalFileManager implements FileManager {
      *
      * @param dirName The name of the new directory. Must be inside the currently active directory; that is, a member of ls().
      */
-    public void cd (String dirName) {
+    public synchronized void cd (String dirName) {
         cd(getFileFromString(dirName));
     }
 
     /**
      * Changes the active directory to the parent of the current directory.  If there is no parent directory, no change will be made.
      */
-    public void cd () {
+    public synchronized void cd () {
         if (directory.getParentFile() != null) {
             directory = directory.getParentFile();
         }
@@ -107,7 +109,7 @@ public class NavigationalFileManager implements FileManager {
      * @param file The File to be deleted.
      * @return Returns true if the file is deleted, false if not. Attempting to delete a non-empty folder will always return false.
      */
-    public boolean rm (File file) {
+    public synchronized boolean rm (File file) {
         return file.delete();
     }
 
@@ -117,7 +119,7 @@ public class NavigationalFileManager implements FileManager {
      * @param fileName The name of the file to be deleted.  Must be inside the current directory.
      * @return Returns true if the file is deleted, false if not.  Attempting to delete a non-empty folder will always return false.
      */
-    public boolean rm (String fileName) {
+    public synchronized boolean rm (String fileName) {
         return rm(getFileFromString(fileName));
     }
 
@@ -127,7 +129,7 @@ public class NavigationalFileManager implements FileManager {
      * @param fileName The name of the folder/file to be deleted.  Must be inside the current directory.
      * @return Returns true if the delete is successful, false if not.  Warning: even if it returns false, some files/folders may still have been deleted.
      */
-    public boolean rmdir (String fileName) {
+    public synchronized boolean rmdir (String fileName) {
         return rmdir(getFileFromString(fileName));
     }
 
@@ -137,7 +139,7 @@ public class NavigationalFileManager implements FileManager {
      * @param file The File to be deleted.
      * @return Returns true if the delete is successful, false if not.  Warning: even if it returns false, some files/folders may still have been deleted.
      */
-    private boolean rmdir (File file) {
+    private synchronized boolean rmdir (File file) {
         if (file.isDirectory()) {
             for (File f : file.listFiles()) {
                 if (!rmdir(f)) {
@@ -153,7 +155,7 @@ public class NavigationalFileManager implements FileManager {
      *
      * @return A String containing the absolute path of the current directory.
      */
-    public String pwd () {
+    public synchronized String pwd () {
         return directory.getAbsolutePath();
     }
 
@@ -161,7 +163,7 @@ public class NavigationalFileManager implements FileManager {
      * Returns the name of the current directory.
      * @return A String containing the name of the current directory.
      */
-    public String currentDir () {
+    public synchronized String currentDir () {
         return directory.getName();
     }
 
@@ -171,7 +173,7 @@ public class NavigationalFileManager implements FileManager {
      *
      * @return A string array containing the file names of all duplicate files.
      */
-    public String[] findDuplicates () {
+    public synchronized String[] findDuplicates () {
         Multimap<Long,String> checksums = getChecksums();
         ArrayList<String> duplicates = new ArrayList<String>();
 
@@ -194,7 +196,7 @@ public class NavigationalFileManager implements FileManager {
      * @param fileName The name of the file.
      * @return The File object specified by the parameter.
      */
-    private File getFileFromString (String fileName) {
+    private synchronized File getFileFromString (String fileName) {
         for (File f : directory.listFiles()) {
             if (f.getName().equals(fileName)) {
                 return f;
@@ -208,7 +210,7 @@ public class NavigationalFileManager implements FileManager {
      *
      * @return A Multimap containing all the checksums, as well as their corresponding files.
      */
-    private Multimap<Long,String> getChecksums () {
+    private synchronized Multimap<Long,String> getChecksums () {
 
         Multimap<Long,String> checksums = HashMultimap.create();
 
