@@ -1,6 +1,8 @@
 package com.agile.findduplicates;
 
 import javax.swing.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /**
  * Created by Ben on 10/4/2014.
@@ -14,6 +16,7 @@ public class FinderPanel {
     private JTree duplicateFileTree;
 
     public static void main(String[] args) {
+
         JFrame frame = new JFrame("FinderPanel");
         frame.setContentPane(new FinderPanel().panel1);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
