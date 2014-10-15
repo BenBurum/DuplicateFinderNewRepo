@@ -1,6 +1,7 @@
 package com.agile.findduplicates;
 
 import javax.swing.*;
+<<<<<<< HEAD
 import javax.swing.tree.DefaultMutableTreeNode;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -175,6 +176,19 @@ public class FinderPanel extends JPanel {
 
 
 
+=======
+
+/**
+ * Created by Ben on 10/4/2014.
+ */
+public class FinderPanel {
+    private JPanel panel1;
+    private JTextField dirPathTextField;
+    private JButton findDirectoryButton;
+    private JTextArea textArea1;
+    private JButton analyzeButton;
+    private JTree duplicateFileTree;
+>>>>>>> master
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("FinderPanel");
@@ -184,6 +198,7 @@ public class FinderPanel extends JPanel {
         frame.setVisible(true);
     }
 
+<<<<<<< HEAD
     /**
      * Creates UI components
      */
@@ -245,5 +260,9 @@ public class FinderPanel extends JPanel {
         //create the tree by passing in the root node
         duplicatesTree = new JTree(root);
         add(duplicatesTree);
+=======
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
+>>>>>>> master
     }
 }
