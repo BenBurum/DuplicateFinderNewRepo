@@ -93,7 +93,7 @@
           <component id="fd771" class="javax.swing.JTree" binding="duplicatesTree" custom-create="true">
             <constraints/>
             <properties>
-              <editable value="false"/>
+              <editable value="true"/>
               <largeModel value="false"/>
               <name value="Duplicates"/>
             </properties>
@@ -185,6 +185,7 @@
         <properties>
           <actionCommand value="checkbox"/>
           <label value="Name w/ Extension"/>
+          <selected value="true"/>
           <text value="Name w/ Extension"/>
         </properties>
       </component>

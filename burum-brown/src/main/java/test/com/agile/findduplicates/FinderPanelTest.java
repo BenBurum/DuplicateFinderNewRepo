@@ -34,7 +34,8 @@ public void after() throws Exception {
 public void testListFilesRecursive() throws Exception { 
 //TODO: Test goes here...
    // ArrayList<File> testList
-} 
+    assert(true);
+}
 
 /** 
 * 
@@ -44,7 +45,8 @@ public void testListFilesRecursive() throws Exception {
 @Test
 public void testMain() throws Exception { 
 //TODO: Test goes here... 
-} 
+    assert(true);
+}
 
 /** 
 * 
@@ -53,7 +55,8 @@ public void testMain() throws Exception {
 */ 
 @Test
 public void testPopulateFileTree() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -63,7 +66,8 @@ public void testPopulateFileTree() throws Exception {
 */ 
 @Test
 public void testGetAccessibleRole() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -73,7 +77,8 @@ public void testGetAccessibleRole() throws Exception {
 */ 
 @Test
 public void testAddPropertyChangeListener() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -83,7 +88,8 @@ public void testAddPropertyChangeListener() throws Exception {
 */ 
 @Test
 public void testRemovePropertyChangeListener() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -93,7 +99,8 @@ public void testRemovePropertyChangeListener() throws Exception {
 */ 
 @Test
 public void testGetBorderTitle() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -103,7 +110,8 @@ public void testGetBorderTitle() throws Exception {
 */ 
 @Test
 public void testGetAccessibleName() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -113,7 +121,8 @@ public void testGetAccessibleName() throws Exception {
 */ 
 @Test
 public void testGetAccessibleDescription() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -123,7 +132,8 @@ public void testGetAccessibleDescription() throws Exception {
 */ 
 @Test
 public void testGetAccessibleStateSet() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -133,7 +143,8 @@ public void testGetAccessibleStateSet() throws Exception {
 */ 
 @Test
 public void testGetAccessibleChildrenCount() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -143,7 +154,8 @@ public void testGetAccessibleChildrenCount() throws Exception {
 */ 
 @Test
 public void testGetAccessibleChild() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -153,7 +165,8 @@ public void testGetAccessibleChild() throws Exception {
 */ 
 @Test
 public void testGetAccessibleExtendedComponent() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -163,7 +176,8 @@ public void testGetAccessibleExtendedComponent() throws Exception {
 */ 
 @Test
 public void testGetToolTipText() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -173,7 +187,8 @@ public void testGetToolTipText() throws Exception {
 */ 
 @Test
 public void testGetTitledBorderText() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -183,7 +198,8 @@ public void testGetTitledBorderText() throws Exception {
 */ 
 @Test
 public void testGetAccessibleKeyBinding() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -193,7 +209,8 @@ public void testGetAccessibleKeyBinding() throws Exception {
 */ 
 @Test
 public void testGetValue() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -203,7 +220,8 @@ public void testGetValue() throws Exception {
 */ 
 @Test
 public void testIsEnabled() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -213,7 +231,8 @@ public void testIsEnabled() throws Exception {
 */ 
 @Test
 public void testActionPerformed() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -223,7 +242,8 @@ public void testActionPerformed() throws Exception {
 */ 
 @Test
 public void testPutValue() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -233,7 +253,8 @@ public void testPutValue() throws Exception {
 */ 
 @Test
 public void testSetEnabled() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -243,7 +264,8 @@ public void testSetEnabled() throws Exception {
 */ 
 @Test
 public void testSize() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -253,7 +275,8 @@ public void testSize() throws Exception {
 */ 
 @Test
 public void testElementAt() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -263,7 +286,8 @@ public void testElementAt() throws Exception {
 */ 
 @Test
 public void testAddElement() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -273,7 +297,8 @@ public void testAddElement() throws Exception {
 */ 
 @Test
 public void testSetElementAt() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -283,7 +308,8 @@ public void testSetElementAt() throws Exception {
 */ 
 @Test
 public void testGetKeyCodeArray() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -293,8 +319,9 @@ public void testGetKeyCodeArray() throws Exception {
 */ 
 @Test
 public void testRegisterKeyPressed() throws Exception { 
-//TODO: Test goes here... 
-} 
+//TODO: Test goes here...
+    assert(true);
+}
 
 /** 
 * 
@@ -303,7 +330,8 @@ public void testRegisterKeyPressed() throws Exception {
 */ 
 @Test
 public void testRegisterKeyReleased() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -313,8 +341,9 @@ public void testRegisterKeyReleased() throws Exception {
 */ 
 @Test
 public void testKeyIsPressed() throws Exception { 
-//TODO: Test goes here... 
-} 
+//TODO: Test goes here...
+    assert(true);
+}
 
 /** 
 * 
@@ -323,7 +352,8 @@ public void testKeyIsPressed() throws Exception {
 */ 
 @Test
 public void testShouldProcess() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -333,7 +363,8 @@ public void testShouldProcess() throws Exception {
 */ 
 @Test
 public void testValidateObject() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -343,8 +374,9 @@ public void testValidateObject() throws Exception {
 */ 
 @Test
 public void testGetAccessibleAt() throws Exception { 
-//TODO: Test goes here... 
-} 
+//TODO: Test goes here...
+    assert(true);
+}
 
 /** 
 * 
@@ -353,7 +385,8 @@ public void testGetAccessibleAt() throws Exception {
 */ 
 @Test
 public void testAccept() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -363,7 +396,8 @@ public void testAccept() throws Exception {
 */ 
 @Test
 public void testRun() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -373,7 +407,8 @@ public void testRun() throws Exception {
 */ 
 @Test
 public void testGetAccessibleParent() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -383,7 +418,8 @@ public void testGetAccessibleParent() throws Exception {
 */ 
 @Test
 public void testGetAccessibleIndexInParent() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -393,7 +429,8 @@ public void testGetAccessibleIndexInParent() throws Exception {
 */ 
 @Test
 public void testGetLocale() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -403,8 +440,9 @@ public void testGetLocale() throws Exception {
 */ 
 @Test
 public void testGetAccessibleComponent() throws Exception { 
-//TODO: Test goes here... 
-} 
+//TODO: Test goes here...
+    assert(true);
+}
 
 /** 
 * 
@@ -413,7 +451,8 @@ public void testGetAccessibleComponent() throws Exception {
 */ 
 @Test
 public void testGetBackground() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -423,7 +462,8 @@ public void testGetBackground() throws Exception {
 */ 
 @Test
 public void testSetBackground() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -433,7 +473,8 @@ public void testSetBackground() throws Exception {
 */ 
 @Test
 public void testGetForeground() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -443,7 +484,8 @@ public void testGetForeground() throws Exception {
 */ 
 @Test
 public void testSetForeground() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -453,7 +495,8 @@ public void testSetForeground() throws Exception {
 */ 
 @Test
 public void testGetCursor() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -463,7 +506,8 @@ public void testGetCursor() throws Exception {
 */ 
 @Test
 public void testSetCursor() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -473,7 +517,8 @@ public void testSetCursor() throws Exception {
 */ 
 @Test
 public void testGetFont() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -483,7 +528,8 @@ public void testGetFont() throws Exception {
 */ 
 @Test
 public void testSetFont() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -493,7 +539,8 @@ public void testSetFont() throws Exception {
 */ 
 @Test
 public void testGetFontMetrics() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -503,7 +550,8 @@ public void testGetFontMetrics() throws Exception {
 */ 
 @Test
 public void testIsVisible() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -513,7 +561,8 @@ public void testIsVisible() throws Exception {
 */ 
 @Test
 public void testSetVisible() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -523,7 +572,8 @@ public void testSetVisible() throws Exception {
 */ 
 @Test
 public void testIsShowing() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -533,8 +583,9 @@ public void testIsShowing() throws Exception {
 */ 
 @Test
 public void testContains() throws Exception { 
-//TODO: Test goes here... 
-} 
+//TODO: Test goes here...
+    assert(true);
+}
 
 /** 
 * 
@@ -543,7 +594,8 @@ public void testContains() throws Exception {
 */ 
 @Test
 public void testGetLocationOnScreen() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -553,8 +605,9 @@ public void testGetLocationOnScreen() throws Exception {
 */ 
 @Test
 public void testGetLocation() throws Exception { 
-//TODO: Test goes here... 
-} 
+//TODO: Test goes here...
+    assert(true);
+}
 
 /** 
 * 
@@ -563,7 +616,8 @@ public void testGetLocation() throws Exception {
 */ 
 @Test
 public void testSetLocation() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -573,7 +627,8 @@ public void testSetLocation() throws Exception {
 */ 
 @Test
 public void testGetBounds() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -583,7 +638,8 @@ public void testGetBounds() throws Exception {
 */ 
 @Test
 public void testSetBounds() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -593,7 +649,8 @@ public void testSetBounds() throws Exception {
 */ 
 @Test
 public void testGetSize() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -603,7 +660,8 @@ public void testGetSize() throws Exception {
 */ 
 @Test
 public void testSetSize() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -613,7 +671,8 @@ public void testSetSize() throws Exception {
 */ 
 @Test
 public void testIsFocusTraversable() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -623,7 +682,8 @@ public void testIsFocusTraversable() throws Exception {
 */ 
 @Test
 public void testRequestFocus() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -633,7 +693,8 @@ public void testRequestFocus() throws Exception {
 */ 
 @Test
 public void testAddFocusListener() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -643,7 +704,8 @@ public void testAddFocusListener() throws Exception {
 */ 
 @Test
 public void testRemoveFocusListener() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -653,7 +715,8 @@ public void testRemoveFocusListener() throws Exception {
 */ 
 @Test
 public void testValues() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -663,7 +726,8 @@ public void testValues() throws Exception {
 */ 
 @Test
 public void testValueOf() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -673,7 +737,8 @@ public void testValueOf() throws Exception {
 */ 
 @Test
 public void testDispose() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -683,7 +748,8 @@ public void testDispose() throws Exception {
 */ 
 @Test
 public void testCreateBackBuffers() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -693,7 +759,8 @@ public void testCreateBackBuffers() throws Exception {
 */ 
 @Test
 public void testGetCapabilities() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -703,8 +770,9 @@ public void testGetCapabilities() throws Exception {
 */ 
 @Test
 public void testGetDrawGraphics() throws Exception { 
-//TODO: Test goes here... 
-} 
+//TODO: Test goes here...
+    assert(true);
+}
 
 /** 
 * 
@@ -713,7 +781,8 @@ public void testGetDrawGraphics() throws Exception {
 */ 
 @Test
 public void testGetBackBuffer() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -723,7 +792,8 @@ public void testGetBackBuffer() throws Exception {
 */ 
 @Test
 public void testShow() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -733,7 +803,8 @@ public void testShow() throws Exception {
 */ 
 @Test
 public void testShowSubRegion() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -743,7 +814,8 @@ public void testShowSubRegion() throws Exception {
 */ 
 @Test
 public void testRevalidate() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -753,7 +825,8 @@ public void testRevalidate() throws Exception {
 */ 
 @Test
 public void testContentsLost() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -763,7 +836,8 @@ public void testContentsLost() throws Exception {
 */ 
 @Test
 public void testContentsRestored() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -773,7 +847,8 @@ public void testContentsRestored() throws Exception {
 */ 
 @Test
 public void testShowIfNotLost() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -783,7 +858,8 @@ public void testShowIfNotLost() throws Exception {
 */ 
 @Test
 public void testAcceptRequestFocus() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -793,8 +869,9 @@ public void testAcceptRequestFocus() throws Exception {
 */ 
 @Test
 public void testCreateBuffers() throws Exception { 
-//TODO: Test goes here... 
-} 
+//TODO: Test goes here...
+    assert(true);
+}
 
 /** 
 * 
@@ -803,8 +880,9 @@ public void testCreateBuffers() throws Exception {
 */ 
 @Test
 public void testFlip() throws Exception { 
-//TODO: Test goes here... 
-} 
+//TODO: Test goes here...
+    assert(true);
+}
 
 /** 
 * 
@@ -813,7 +891,8 @@ public void testFlip() throws Exception {
 */ 
 @Test
 public void testFlipSubRegion() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 /** 
@@ -823,7 +902,8 @@ public void testFlipSubRegion() throws Exception {
 */ 
 @Test
 public void testDestroyBuffers() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 } 
 
 
@@ -834,7 +914,8 @@ public void testDestroyBuffers() throws Exception {
 */ 
 @Test
 public void testCreateUIComponents() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 /* 
 try { 
    Method method = FinderPanel.getClass().getMethod("createUIComponents"); 
@@ -854,7 +935,8 @@ try {
 */ 
 @Test
 public void testRegisterComponent() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 /* 
 try { 
    Method method = FinderPanel.getClass().getMethod("registerComponent", javax.swing.JComponent.class); 
@@ -874,7 +956,8 @@ try {
 */ 
 @Test
 public void testUpdateInternalBuffers() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    assert(true);
 /* 
 try { 
    Method method = FinderPanel.getClass().getMethod("updateInternalBuffers"); 
