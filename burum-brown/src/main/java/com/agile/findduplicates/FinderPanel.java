@@ -8,6 +8,8 @@ import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ContainerAdapter;
 import java.io.File;
 import java.util.*;
 
@@ -19,7 +21,7 @@ public class FinderPanel extends JPanel implements Runnable {
     private JTree duplicatesTree;
     private JTextArea outputTextArea;
     private JButton listFilesButton;
-    private JButton ignoreButton;
+    private JButton ignoreSelectedButton;
     private JButton deleteButtion;
     private JScrollPane scrollPane1;
     private JTextField dirPathTextField;
@@ -28,10 +30,13 @@ public class FinderPanel extends JPanel implements Runnable {
     private JCheckBox recursiveCheckBox;
     private JButton analyzeButton;
     private JList matchesList;
-    private JList list2;
+    private JList dupesList;
     private JButton testDataButton;
+    private JButton dupesListButton;
+    private JButton ignoreSelectedButton2;
+    private JButton deleteSelectedButton;
     private Map fullNameDupesMap;
-    private MultiMap dupesMap;
+    private ArrayListMultimap<File, File> dupesMap;
 
 
     /**
@@ -39,6 +44,9 @@ public class FinderPanel extends JPanel implements Runnable {
      */
     public FinderPanel() {
 
+        /**
+         * Lists files in the directory, either recursively or not.  Doesn't really belong here in the gui panel but it's pretty useful code either way.
+         */
         listFilesButton.addActionListener(new ActionListener() {
 
             /**
@@ -124,30 +132,59 @@ public class FinderPanel extends JPanel implements Runnable {
         });
 
         /**
-         *  Creates a dummy Multimap to feed into the JLists.
+         *  Creates a dummy Multimap to feed into the JLists when the "use test data" button is pressed.
          */
         testDataButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Multimap<String,String> dupesMap =  ArrayListMultimap.create();
-                dupesMap.put("New Text Document.txt","C:\\Users\\Ben\\TestDir\\New Text Document.txt");
-                dupesMap.put("New Text Document.txt","C:\\Users\\Ben\\TestDir\\New Folder\\New Text Document.txt");
-                dupesMap.put("New Text Document(1).txt","C:\\Users\\Ben\\TestDir\\New Text Document(1).txt");
-                dupesMap.put("New Text Document(1).txt","C:\\Users\\Ben\\TestDir\\New Folder\\New Text Document(1).txt");
-                populateMatchesLists(dupesMap);
+                ArrayListMultimap<File, File> dupeMap = ArrayListMultimap.create();
+                dupeMap.asMap();
+                dupeMap.put(new File("New Text Document.txt"), new File("C:\\Users\\Ben\\TestDir\\New Text Document.txt"));
+                dupeMap.put(new File("New Text Document(1).txt"), new File("C:\\Users\\Ben\\TestDir\\New Text Document(1).txt"));
+                dupeMap.put(new File("New Text Document(1).txt"), new File("C:\\Users\\Ben\\TestDir\\New Folder\\New Text Document(1).txt"));
+
+                dupeMap.put(new File("New Text Document.txt"), new File("C:\\Users\\Ben\\TestDir\\New Folder\\New Text Document.txt"));
+                dupesMap = dupeMap;
+                populateMatchesList(dupeMap);
+            }
+        });
+        matchesList.addComponentListener(new ComponentAdapter() {
+        });
+        matchesList.addContainerListener(new ContainerAdapter() {
+        });
+        dupesListButton.addActionListener(new ActionListener() {
+            /**
+             * Invoked when Show Duplicates button is pressed.  Populates the JList on the right with the values corresponding to the key which is currently selected.
+             *
+             * @param e
+             */
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DefaultListModel dupesModel = new DefaultListModel();
+                try {
+
+                    File key = new File(matchesList.getSelectedValue().toString());
+                    List<File> duplicates = dupesMap.get(key);
+                    for (File dupeFile : duplicates) {
+                        dupesModel.addElement(dupeFile);
+                    }
+                    dupesList.setModel(dupesModel);
+                }catch(Exception ex){
+                    outputTextArea.append("Error: invalid selection." + ex);
+                }
             }
         });
     }
 
     /**
-     *
+     *Method to populate the List on the left with the keys from the MultiMap.
      */
-       public void populateMatchesLists(Multimap<String, String> map){
+       public void populateMatchesList(Multimap<File, File> map){
 
            DefaultListModel matchesModel = new DefaultListModel();
-           DefaultListModel dupesModel = new DefaultListModel();
 
-           for (String key : map.keySet()){
+
+           for (File key : map.keySet()){
                matchesModel.addElement(key);
 
 
@@ -155,6 +192,8 @@ public class FinderPanel extends JPanel implements Runnable {
            matchesList.setModel(matchesModel);
 
        }
+
+
 
     /**
      * Takes an ArrayList of Files as a parameter and returns a HashMap with (String) Filenames as the keys and ArrayLists of
@@ -185,7 +224,7 @@ public class FinderPanel extends JPanel implements Runnable {
 
     /**
      * Takes a directory and an ArrayList (initially should be empty) as input and returns an ArrayList of every
-     * file in the directory, recursively.
+     * file in the directory, recursively.  Doesn't belong in the GUI panel, but useful code nonetheless I think.
      *
      * @param dir
      * @return
@@ -212,7 +251,9 @@ public class FinderPanel extends JPanel implements Runnable {
         return recursiveList;
     }
 
-
+    /**
+     * Allows the panel to be created from FinderMain.java.
+     */
     public void run(){
         JFrame frame = new JFrame("FinderPanel");
         frame.setContentPane(new FinderPanel().panel1);
@@ -221,6 +262,10 @@ public class FinderPanel extends JPanel implements Runnable {
         frame.setVisible(true);
     }
 
+    /**
+     * Not sure if it still needs a main method in this class.
+     * @param args
+     */
     public static void main(String[] args) {
 
         JFrame frame = new JFrame("FinderPanel");
@@ -231,7 +276,7 @@ public class FinderPanel extends JPanel implements Runnable {
     }
 
     /**
-     * Creates UI components
+     * Creates UI components.  Not being used currently since I'm not using a FileTree.
      */
     private void createUIComponents() {
 
@@ -243,6 +288,10 @@ public class FinderPanel extends JPanel implements Runnable {
         //duplicateFileTree = new javax.swing.JTree(populateJTree.addNodes(null, null));
     }
 
+    /**
+     * overloaded constructor.  See comment above.
+     * @param map
+     */
     private void createUIComponents(HashMap map) {
 
 
@@ -254,8 +303,12 @@ public class FinderPanel extends JPanel implements Runnable {
         //duplicateFileTree = new javax.swing.JTree(populateJTree.addNodes(null, null));
     }
 
+    /**
+     * Not sure.  Looks like this method is never called.
+     * @param map
+     */
     private void createUIComponents(MultiMap map){
-        populateMatchesLists((Multimap<String, String>) map);
+        populateMatchesList((Multimap<File, File>) map);
     }
 
     /**

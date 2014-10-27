@@ -9,9 +9,10 @@ import javax.swing.*;
 public final class FinderMain {
 
 
-
-
-
+    /**
+     * Creates the JFrame and puts the panel in it with the GUI.
+     * @param panel
+     */
     public static void createJFrame(FinderPanel panel){
         JFrame frame = new JFrame();
         frame.setContentPane(panel);

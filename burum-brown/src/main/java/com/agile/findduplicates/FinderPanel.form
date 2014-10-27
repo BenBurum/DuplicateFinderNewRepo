@@ -17,45 +17,44 @@
     <rowspec value="top:4dlu:noGrow"/>
     <rowspec value="center:29px:noGrow"/>
     <rowspec value="top:4dlu:noGrow"/>
-    <rowspec value="center:max(d;4px):noGrow"/>
-    <rowspec value="top:4dlu:noGrow"/>
-    <rowspec value="center:max(d;4px):noGrow"/>
-    <rowspec value="center:max(d;4px):noGrow"/>
-    <rowspec value="top:4dlu:noGrow"/>
-    <rowspec value="center:max(d;4px):noGrow"/>
-    <rowspec value="center:max(d;4px):noGrow"/>
+    <rowspec value="center:27px:noGrow"/>
+    <rowspec value="top:79dlu:noGrow"/>
+    <rowspec value="center:117px:noGrow"/>
     <rowspec value="top:4dlu:noGrow"/>
     <rowspec value="center:max(d;4px):noGrow"/>
     <rowspec value="top:5dlu:noGrow"/>
-    <rowspec value="center:39px:noGrow"/>
-    <rowspec value="center:87px:noGrow"/>
-    <rowspec value="center:245px:noGrow"/>
-    <rowspec value="top:4dlu:noGrow"/>
+    <rowspec value="center:max(d;4px):noGrow"/>
+    <rowspec value="center:149px:noGrow"/>
     <rowspec value="center:max(d;4px):noGrow"/>
     <rowspec value="top:4dlu:noGrow"/>
-    <rowspec value="center:140px:noGrow"/>
-    <colspec value="left:4dlu:noGrow"/>
-    <colspec value="left:4dlu:noGrow"/>
-    <colspec value="fill:129px:noGrow"/>
-    <colspec value="fill:d:grow"/>
-    <colspec value="left:d:noGrow"/>
+    <rowspec value="center:max(d;4px):noGrow"/>
+    <rowspec value="center:max(d;4px):noGrow"/>
+    <rowspec value="center:max(d;4px):noGrow"/>
+    <rowspec value="top:13dlu:noGrow"/>
+    <rowspec value="center:m:grow"/>
+    <rowspec value="top:4dlu:noGrow"/>
+    <rowspec value="center:max(d;4px):noGrow"/>
+    <colspec value="left:m:grow"/>
     <colspec value="fill:max(d;4px):noGrow"/>
-    <colspec value="fill:d:noGrow"/>
-    <colspec value="fill:373px:grow"/>
-    <colspec value="left:4dlu:noGrow"/>
+    <colspec value="fill:m:grow"/>
+    <colspec value="fill:m:noGrow"/>
+    <colspec value="left:m:grow"/>
+    <colspec value="left:5dlu:noGrow"/>
     <colspec value="fill:max(d;4px):noGrow"/>
     <constraints>
-      <xy x="20" y="20" width="931" height="927"/>
+      <xy x="20" y="20" width="1923" height="1011"/>
     </constraints>
     <properties>
-      <preferredSize width="860" height="810"/>
+      <autoscrolls value="false"/>
+      <minimumSize width="448" height="960"/>
+      <preferredSize width="860" height="900"/>
       <requestFocusEnabled value="true"/>
     </properties>
     <border type="none"/>
     <children>
       <component id="1ef54" class="javax.swing.JLabel">
         <constraints>
-          <grid row="0" column="3" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="2" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
           <forms defaultalign-horz="false"/>
         </constraints>
         <properties>
@@ -65,30 +64,9 @@
           <text value="Duplicate File Finder"/>
         </properties>
       </component>
-      <component id="cf7ae" class="javax.swing.JButton" binding="listFilesButton" default-binding="true">
-        <constraints>
-          <grid row="6" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-          <forms top="0" left="10" bottom="0" right="10" defaultalign-horz="false"/>
-        </constraints>
-        <properties>
-          <text value="List Files!"/>
-        </properties>
-      </component>
-      <component id="1e528" class="javax.swing.JButton" binding="deleteButtion">
-        <constraints>
-          <grid row="28" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-          <forms defaultalign-vert="false"/>
-        </constraints>
-        <properties>
-          <text value="Delete"/>
-        </properties>
-        <clientProperties>
-          <html.disable class="java.lang.Boolean" value="false"/>
-        </clientProperties>
-      </component>
       <scrollpane id="890ad">
         <constraints>
-          <grid row="10" column="3" row-span="19" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="10" column="2" row-span="15" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
           <forms top="0" left="10" bottom="0" right="0" defaultalign-horz="false" defaultalign-vert="false"/>
         </constraints>
         <properties>
@@ -101,22 +79,14 @@
             <properties>
               <maximumSize width="0" height="4096"/>
               <model/>
+              <selectionMode value="0"/>
             </properties>
           </component>
         </children>
       </scrollpane>
-      <component id="e6d4b" class="javax.swing.JButton" binding="ignoreButton" default-binding="true">
-        <constraints>
-          <grid row="10" column="6" row-span="17" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-          <forms defaultalign-vert="false"/>
-        </constraints>
-        <properties>
-          <text value="Ignore"/>
-        </properties>
-      </component>
       <component id="5cc1e" class="javax.swing.JLabel">
         <constraints>
-          <grid row="8" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="8" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
           <forms top="0" left="0" bottom="0" right="10" defaultalign-horz="false"/>
         </constraints>
         <properties>
@@ -125,21 +95,29 @@
       </component>
       <scrollpane id="78e12" binding="scrollPane1">
         <constraints>
-          <grid row="10" column="7" row-span="19" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="10" column="4" row-span="15" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
           <forms top="0" left="10" bottom="0" right="10" defaultalign-horz="false" defaultalign-vert="false"/>
         </constraints>
-        <properties/>
+        <properties>
+          <autoscrolls value="true"/>
+        </properties>
         <border type="none"/>
         <children>
-          <component id="4f661" class="javax.swing.JList" binding="list2" default-binding="true">
+          <component id="4f661" class="javax.swing.JList" binding="dupesList">
             <constraints/>
-            <properties/>
+            <properties>
+              <autoscrolls value="true"/>
+              <selectionMode value="0"/>
+            </properties>
+            <clientProperties>
+              <List.isFileList class="java.lang.Boolean" value="false"/>
+            </clientProperties>
           </component>
         </children>
       </scrollpane>
       <component id="1166e" class="javax.swing.JTextField" binding="dirPathTextField">
         <constraints>
-          <grid row="4" column="3" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="4" column="2" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
           <forms top="0" left="10" bottom="0" right="10" defaultalign-horz="false"/>
@@ -150,7 +128,7 @@
       </component>
       <component id="dc1ef" class="javax.swing.JLabel">
         <constraints>
-          <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <forms top="0" left="10" bottom="0" right="0"/>
         </constraints>
         <properties>
@@ -158,20 +136,9 @@
           <text value="Directory to examine: "/>
         </properties>
       </component>
-      <component id="7ab16" class="javax.swing.JLabel">
-        <constraints>
-          <grid row="27" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-          <forms/>
-        </constraints>
-        <properties>
-          <horizontalAlignment value="0"/>
-          <horizontalTextPosition value="0"/>
-          <text value="Selection:"/>
-        </properties>
-      </component>
       <component id="c11f9" class="javax.swing.JLabel">
         <constraints>
-          <grid row="8" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <forms top="0" left="10" bottom="0" right="0"/>
         </constraints>
         <properties>
@@ -180,7 +147,7 @@
       </component>
       <component id="ffadc" class="javax.swing.JCheckBox" binding="fullNameCheckBox">
         <constraints>
-          <grid row="14" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="14" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <forms defaultalign-vert="false"/>
         </constraints>
         <properties>
@@ -192,7 +159,7 @@
       </component>
       <component id="28a1a" class="javax.swing.JLabel">
         <constraints>
-          <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="8" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <forms/>
         </constraints>
         <properties>
@@ -201,7 +168,7 @@
       </component>
       <component id="abb98" class="javax.swing.JCheckBox" binding="checksumCheckBox">
         <constraints>
-          <grid row="12" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="12" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <forms/>
         </constraints>
         <properties>
@@ -211,7 +178,7 @@
       </component>
       <component id="6164d" class="javax.swing.JCheckBox" default-binding="true">
         <constraints>
-          <grid row="16" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="16" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
           <forms defaultalign-vert="false"/>
         </constraints>
         <properties>
@@ -219,40 +186,42 @@
           <text value="Name w/o ext"/>
         </properties>
       </component>
-      <component id="c2647" class="javax.swing.JCheckBox" binding="recursiveCheckBox">
-        <constraints>
-          <grid row="28" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="10" fill="0" indent="0" use-parent-layout="false"/>
-          <forms defaultalign-vert="false"/>
-        </constraints>
-        <properties>
-          <selected value="true"/>
-          <text value="Find Recursively"/>
-        </properties>
-      </component>
       <component id="98f93" class="javax.swing.JButton" binding="analyzeButton">
         <constraints>
-          <grid row="6" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-          <forms top="0" left="10" bottom="0" right="0"/>
+          <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <forms top="0" left="7" bottom="0" right="0"/>
         </constraints>
         <properties>
           <text value="Analyze!"/>
         </properties>
       </component>
-      <scrollpane id="18651">
+      <component id="7b9ef" class="javax.swing.JButton" binding="testDataButton">
         <constraints>
-          <grid row="32" column="3" row-span="1" col-span="5" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <text value="Use Test Data"/>
+        </properties>
+      </component>
+      <scrollpane id="b2ffd">
+        <constraints>
+          <grid row="30" column="2" row-span="1" col-span="3" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
           <forms defaultalign-horz="false" defaultalign-vert="false"/>
         </constraints>
-        <properties/>
+        <properties>
+          <autoscrolls value="true"/>
+        </properties>
         <border type="none"/>
         <children>
-          <component id="2a275" class="javax.swing.JTextArea" binding="outputTextArea">
+          <component id="3bee4" class="javax.swing.JTextArea" binding="outputTextArea">
             <constraints/>
             <properties>
+              <autoscrolls value="true"/>
               <editable value="false"/>
               <inheritsPopupMenu value="false"/>
               <lineWrap value="true"/>
-              <margin top="10" left="10" bottom="10" right="10"/>
+              <margin top="10" left="10" bottom="20" right="10"/>
               <minimumSize width="750" height="17"/>
               <text value=""/>
               <wrapStyleWord value="true"/>
@@ -260,22 +229,104 @@
           </component>
         </children>
       </scrollpane>
-      <component id="20137" class="javax.swing.JLabel">
+      <component id="c2647" class="javax.swing.JCheckBox" binding="recursiveCheckBox">
         <constraints>
-          <grid row="30" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-          <forms/>
+          <grid row="23" column="0" row-span="2" col-span="2" vsize-policy="0" hsize-policy="3" anchor="10" fill="0" indent="0" use-parent-layout="false"/>
+          <forms defaultalign-vert="false"/>
         </constraints>
         <properties>
-          <text value="Output:"/>
+          <selected value="true"/>
+          <text value="Find Recursively"/>
         </properties>
       </component>
-      <component id="7b9ef" class="javax.swing.JButton" binding="testDataButton">
+      <component id="cf7ae" class="javax.swing.JButton" binding="listFilesButton" default-binding="true">
         <constraints>
-          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-          <forms/>
+          <grid row="6" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <forms top="0" left="10" bottom="0" right="10" defaultalign-horz="false"/>
         </constraints>
         <properties>
-          <text value="Use Test Data"/>
+          <text value="List Files!"/>
+        </properties>
+      </component>
+      <component id="f6169" class="javax.swing.JButton" binding="dupesListButton">
+        <constraints>
+          <grid row="12" column="3" row-span="5" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <forms top="5" left="5" bottom="5" right="5" defaultalign-horz="false" defaultalign-vert="false"/>
+        </constraints>
+        <properties>
+          <label value="Show &#10;Duplicates"/>
+          <margin top="0" left="0" bottom="0" right="0"/>
+          <maximumSize width="135" height="32"/>
+          <minimumSize width="135" height="32"/>
+          <preferredSize width="135" height="32"/>
+          <rolloverEnabled value="true"/>
+          <selected value="false"/>
+          <text value="Show &#10;Duplicates"/>
+        </properties>
+      </component>
+      <component id="e6d4b" class="javax.swing.JButton" binding="ignoreSelectedButton" default-binding="true">
+        <constraints>
+          <grid row="26" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
+          <forms top="0" left="7" bottom="0" right="0" defaultalign-horz="false" defaultalign-vert="false"/>
+        </constraints>
+        <properties>
+          <alignmentX value="0.5"/>
+          <rolloverEnabled value="true"/>
+          <text value="Ignore &#10;Selected"/>
+        </properties>
+        <clientProperties>
+          <hideActionText class="java.lang.Boolean" value="true"/>
+        </clientProperties>
+      </component>
+      <component id="1e528" class="javax.swing.JButton" binding="deleteButtion">
+        <constraints>
+          <grid row="26" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <forms top="5" left="7" bottom="5" right="7" defaultalign-horz="false" defaultalign-vert="false"/>
+        </constraints>
+        <properties>
+          <alignmentX value="0.5"/>
+          <text value="Delete all but one."/>
+        </properties>
+        <clientProperties>
+          <html.disable class="java.lang.Boolean" value="false"/>
+        </clientProperties>
+      </component>
+      <component id="20137" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="29" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
+          <forms defaultalign-horz="false" defaultalign-vert="false"/>
+        </constraints>
+        <properties>
+          <text value="Output:  "/>
+        </properties>
+      </component>
+      <component id="552fe" class="javax.swing.JButton" binding="deleteSelectedButton" default-binding="true">
+        <constraints>
+          <grid row="17" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <forms top="5" left="5" bottom="5" right="5" defaultalign-vert="false"/>
+        </constraints>
+        <properties>
+          <autoscrolls value="true"/>
+          <maximumSize width="135" height="32"/>
+          <minimumSize width="135" height="32"/>
+          <preferredSize width="135" height="32"/>
+          <rolloverEnabled value="true"/>
+          <text value="Delete Selected"/>
+        </properties>
+      </component>
+      <component id="cb4cd" class="javax.swing.JButton" binding="ignoreSelectedButton2" default-binding="true">
+        <constraints>
+          <grid row="18" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <forms top="5" left="5" bottom="5" right="5" defaultalign-vert="false"/>
+        </constraints>
+        <properties>
+          <autoscrolls value="true"/>
+          <maximumSize width="125" height="32"/>
+          <minimumSize width="125" height="32"/>
+          <opaque value="true"/>
+          <preferredSize width="120" height="32"/>
+          <rolloverEnabled value="true"/>
+          <text value="Ignore &#10;Selected"/>
         </properties>
       </component>
     </children>
