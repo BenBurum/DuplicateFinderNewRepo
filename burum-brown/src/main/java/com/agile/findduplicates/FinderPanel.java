@@ -1,19 +1,20 @@
 package com.agile.findduplicates;
 
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
+import org.apache.commons.collections.MultiMap;
+
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by Ben Burum and Eric Brown as a group project for Java308 with Spencer Marks at Umass Lowell.
  */
-public class FinderPanel extends JPanel {
+public class FinderPanel extends JPanel implements Runnable {
     private JPanel panel1;
     private JTree duplicatesTree;
     private JTextArea outputTextArea;
@@ -26,7 +27,11 @@ public class FinderPanel extends JPanel {
     private JCheckBox checksumCheckBox;
     private JCheckBox recursiveCheckBox;
     private JButton analyzeButton;
+    private JList matchesList;
+    private JList list2;
+    private JButton testDataButton;
     private Map fullNameDupesMap;
+    private MultiMap dupesMap;
 
 
     /**
@@ -117,7 +122,39 @@ public class FinderPanel extends JPanel {
                 }
             }
         });
+
+        /**
+         *  Creates a dummy Multimap to feed into the JLists.
+         */
+        testDataButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Multimap<String,String> dupesMap =  ArrayListMultimap.create();
+                dupesMap.put("New Text Document.txt","C:\\Users\\Ben\\TestDir\\New Text Document.txt");
+                dupesMap.put("New Text Document.txt","C:\\Users\\Ben\\TestDir\\New Folder\\New Text Document.txt");
+                dupesMap.put("New Text Document(1).txt","C:\\Users\\Ben\\TestDir\\New Text Document(1).txt");
+                dupesMap.put("New Text Document(1).txt","C:\\Users\\Ben\\TestDir\\New Folder\\New Text Document(1).txt");
+                populateMatchesLists(dupesMap);
+            }
+        });
     }
+
+    /**
+     *
+     */
+       public void populateMatchesLists(Multimap<String, String> map){
+
+           DefaultListModel matchesModel = new DefaultListModel();
+           DefaultListModel dupesModel = new DefaultListModel();
+
+           for (String key : map.keySet()){
+               matchesModel.addElement(key);
+
+
+           }
+           matchesList.setModel(matchesModel);
+
+       }
 
     /**
      * Takes an ArrayList of Files as a parameter and returns a HashMap with (String) Filenames as the keys and ArrayLists of
@@ -176,9 +213,16 @@ public class FinderPanel extends JPanel {
     }
 
 
-
+    public void run(){
+        JFrame frame = new JFrame("FinderPanel");
+        frame.setContentPane(new FinderPanel().panel1);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+    }
 
     public static void main(String[] args) {
+
         JFrame frame = new JFrame("FinderPanel");
         frame.setContentPane(new FinderPanel().panel1);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -205,8 +249,13 @@ public class FinderPanel extends JPanel {
         populateFileTree(map);
 
 
+
         //duplicatesTree = new DuplicatesFileTree();
         //duplicateFileTree = new javax.swing.JTree(populateJTree.addNodes(null, null));
+    }
+
+    private void createUIComponents(MultiMap map){
+        populateMatchesLists((Multimap<String, String>) map);
     }
 
     /**

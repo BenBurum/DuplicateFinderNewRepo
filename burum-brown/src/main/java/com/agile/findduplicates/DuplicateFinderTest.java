@@ -1,7 +1,5 @@
-/*
-package test.com.agile.findduplicates;
+package com.agile.findduplicates;
 
-import com.agile.findduplicates.DuplicateFinder;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import org.junit.After;
@@ -15,7 +13,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.UUID;
 
-import static junit.framework.Assert.assertTrue;
+import static junit.framework.Assert.*;
 
 public class DuplicateFinderTest {
 
@@ -94,11 +92,9 @@ public class DuplicateFinderTest {
         return true;
     }
 
-    */
-/**
+    /**
      * Sets up a miniature file system in our working directory for testing purposes.
-     *//*
-
+     */
     @Before
     public void setUp() throws Exception {
         Path p = Paths.get(System.getProperty("user.dir"), DIR_NAME);
@@ -134,25 +130,22 @@ public class DuplicateFinderTest {
         dir3File4 = createFile(dir3Path, FILE4, FILE_CONTENT2);
     }
 
-    */
-/**
+    /**
      * Removes the temporary folders.
-     *//*
-
+     */
     @After
     public void tearDown() throws Exception {
         rm(directory);
         directory = null;
     }
 
-    */
-/**
-     * Tests DuplicateFinder.findDuplicates for correctness.  Files are considered duplicates with the same checksum, and recursion is on.
-     *//*
-
+    /**
+     * Tests DuplicateFinder.findDuplicatesByChecksum for correctness.  Files are considered duplicates with the same checksum, and recursion is on.
+     */
     @Test
-    public void testFindDuplicates1() {
-        Multimap<File,File> testMap = DuplicateFinder.findDuplicates(directory, DuplicateFinder.DUPLICATE_BY_CHECKSUM, true);
+    public void testFindDuplicatesByChecksum() {
+        SortFile directorySort = new DuplicateFinder(directory);
+        Multimap<File,File> testMap = directorySort.findDuplicatesByChecksum(true);
 
         Multimap<File,File> knownMap = HashMultimap.create();
         knownMap.put(dir1File1, dir1File2);
@@ -185,14 +178,13 @@ public class DuplicateFinderTest {
         assertTrue(checkMultimapEquals(testMap, knownMap));
     }
 
-    */
-/**
-     * Tests DuplicateFinder.findDuplicates for correctness.  Files are considered duplicates with the same filename, and recursion is on.
-     *//*
-
+    /**
+     * Tests DuplicateFinder.findDuplicatesByFilename for correctness.  Files are considered duplicates with the same filename, and recursion is on.
+     */
     @Test
-    public void testFindDuplicates2 () {
-        Multimap<File,File> testMap = DuplicateFinder.findDuplicates(directory, DuplicateFinder.DUPLICATE_BY_FILENAME, true);
+    public void testFindDuplicatesByFilename () {
+        SortFile directorySort = new DuplicateFinder(directory);
+        Multimap<File,File> testMap = directorySort.findDuplicatesByFilename(true);
 
         Multimap<File,File> knownMap = HashMultimap.create();
 
@@ -226,14 +218,13 @@ public class DuplicateFinderTest {
         assertTrue(checkMultimapEquals(testMap, knownMap));
     }
 
-    */
-/**
-     * Tests DuplicateFinder.findDuplicates for correctness.  Files are considered duplicates with the same size, and recursion is on.
-     *//*
-
+    /**
+     * Tests DuplicateFinder.findDuplicatesBySize for correctness.  Files are considered duplicates with the same size, and recursion is on.
+     */
     @Test
-    public void testFindDuplicates3() {
-        Multimap<File,File> testMap = DuplicateFinder.findDuplicates(directory, DuplicateFinder.DUPLICATE_BY_SIZE, true);
+    public void testFindDuplicatesBySize () {
+        SortFile directorySort = new DuplicateFinder(directory);
+        Multimap<File,File> testMap = directorySort.findDuplicatesBySize(true);
 
         Multimap<File,File> knownMap = HashMultimap.create();
 
@@ -297,29 +288,27 @@ public class DuplicateFinderTest {
         assertTrue(checkMultimapEquals(testMap, knownMap));
     }
 
-    */
-/**
+    /**
      * Tests DuplicateFinder.findDuplicates for correctness.  The specified directory contains no files, and recursion is off.  This is a test to make sure findDuplicates works properly with no files.
-     *//*
-
+     */
     @Test
-    public void testFindDuplicates4 () {
-        Multimap<File,File> testMap = DuplicateFinder.findDuplicates(directory, DuplicateFinder.DUPLICATE_BY_SIZE, false);
+    public void testFindDuplicatesNull () {
+        SortFile directorySort = new DuplicateFinder(directory);
+        Multimap<File,File> testMap = directorySort.findDuplicatesBySize(true);
 
         Multimap<File,File> knownMap = HashMultimap.create();
 
         assertTrue(checkMultimapEquals(testMap, knownMap));
     }
 
-    */
-/**
+    /**
      * Tests DuplicateFinder.findDuplicates for correctness.  Files are considered duplicates with the same size, and recursion is off.
-     *//*
-
+     */
     @Test
-    public void testFindDuplicates5 () {
+    public void testFindDuplicatesNoRecursion () {
         File dir = Paths.get(directory.getAbsolutePath(), DIR3).toFile();
-        Multimap<File,File> testMap = DuplicateFinder.findDuplicates(dir, DuplicateFinder.DUPLICATE_BY_SIZE, false);
+        SortFile directorySort = new DuplicateFinder(dir);
+        Multimap<File,File> testMap = directorySort.findDuplicatesBySize(false);
 
         Multimap<File,File> knownMap = HashMultimap.create();
 
@@ -330,4 +319,4 @@ public class DuplicateFinderTest {
 
         assertTrue(checkMultimapEquals(testMap, knownMap));
     }
-}*/
+}

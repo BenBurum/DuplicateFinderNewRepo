@@ -9,7 +9,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.zip.CRC32;
 
-public class DuplicateFinder {
+public class DuplicateFinder implements SortFile {
 
     public static final int DUPLICATE_BY_CHECKSUM = 1;
     public static final int DUPLICATE_BY_FILENAME = 2;
@@ -17,21 +17,53 @@ public class DuplicateFinder {
 
     private static final String ERROR_DIRECTORY_ARGUMENT = "com.agile.findduplicates.DuplicateFinder.getChecksums: argument was not a directory";
 
+    private File directory;
+
+    public DuplicateFinder (File dir) {
+        if (!dir.isDirectory()) {
+            throw new IllegalArgumentException(ERROR_DIRECTORY_ARGUMENT);
+        }
+        directory = new File(dir.getAbsolutePath());
+    }
+
+    /**
+     * Returns a Multimap matching each file to the set of its duplicate files.  Equivalent to calling findDuplicates with DUPLICATE_BY_SIZE as a parameter.
+     *
+     * @param recursive If true, will run recursively.  If false, will only check one level deep.
+     * @return A Multimap containing all files that have duplicates as keys.  For each key, the files that are duplicates of that key are its values.  If there are no files in the directory, or if an invalid parameter is passed in, an empty Multimap will be returned.
+     */
+    public Multimap<File,File> findDuplicatesBySize (boolean recursive) {
+        return findDuplicates(DUPLICATE_BY_SIZE, recursive);
+    }
+
+    /**
+     * Returns a Multimap matching each file to the set of its duplicate files.  Equivalent to calling findDuplicates with DUPLICATE_BY_FILENAME as a parameter.
+     *
+     * @param recursive If true, will run recursively.  If false, will only check one level deep.
+     * @return A Multimap containing all files that have duplicates as keys.  For each key, the files that are duplicates of that key are its values.  If there are no files in the directory, or if an invalid parameter is passed in, an empty Multimap will be returned.
+     */
+    public Multimap<File, File> findDuplicatesByFilename (boolean recursive) {
+        return findDuplicates(DUPLICATE_BY_FILENAME, recursive);
+    }
+
+    /**
+     * Returns a Multimap matching each file to the set of its duplicate files.  Equivalent to calling findDuplicates with DUPLICATE_BY_CHECKSUM as a parameter.
+     *
+     * @param recursive If true, will run recursively.  If false, will only check one level deep.
+     * @return A Multimap containing all files that have duplicates as keys.  For each key, the files that are duplicates of that key are its values.  If there are no files in the directory, or if an invalid parameter is passed in, an empty Multimap will be returned.
+     */
+    public Multimap<File, File> findDuplicatesByChecksum (boolean recursive) {
+        return findDuplicates(DUPLICATE_BY_CHECKSUM, recursive);
+    }
+
     /**
      * Returns a Multimap matching each file to the set of its duplicate files.
      *
-     * @throws java.lang.IllegalArgumentException If the File provided is not a directory, an IllegalArgumentException will be thrown.
-     * @param directory The directory to check for duplicate files.
      * @param param Specifies which method should be used to check for duplicate files.
      * @param recursive If true, will run recursively.  If false, will only check one level deep.
      * @return A Multimap containing all files that have duplicates as keys.  For each key, the files that are duplicates of that key are its values.  If there are no files in the directory, or if an invalid parameter is passed in, an empty Multimap will be returned.
      */
-    public static Multimap<File,File> findDuplicates (File directory, int param, boolean recursive) {
-
-        if (!directory.isDirectory()) {
-            throw new IllegalArgumentException(ERROR_DIRECTORY_ARGUMENT);
-        }
-
+    public Multimap<File,File> findDuplicates (int param, boolean recursive) {
         Multimap<File,File> duplicateList = HashMultimap.create();
 
         if (directory.listFiles() == null) {
@@ -78,23 +110,23 @@ public class DuplicateFinder {
      * Calculates checksums (CRC32) for all files in the specified directory.  If invoked recursively, will calculate checksums for subdirectories of the specified directory.
      *
      * @throws java.lang.IllegalArgumentException If the File provided is not a directory, an IllegalArgumentException will be thrown.
-     * @param directory The directory whose checksums should be calculated.
+     * @param dir The directory whose checksums should be calculated.
      * @param recursive If true, will run recursively.  If false, will only check one level deep.
      * @return A Multimap containing all the checksums, as well as their corresponding files.  If there are no files in the directory, an empty Multimap will be returned.
      */
-    private static Multimap<Long,File> getChecksums (File directory, boolean recursive) {
+    private Multimap<Long,File> getChecksums (File dir, boolean recursive) {
 
-        if (!directory.isDirectory()) {
+        if (!dir.isDirectory()) {
             throw new IllegalArgumentException(ERROR_DIRECTORY_ARGUMENT);
         }
 
         Multimap<Long,File> checksums = HashMultimap.create();
 
-        if (directory.listFiles() == null) {
+        if (dir.listFiles() == null) {
             return checksums;
         }
 
-        for (File file : directory.listFiles()) {
+        for (File file : dir.listFiles()) {
             if (!file.isDirectory()) {
                 try {
                     FileInputStream fis = new FileInputStream(file);
@@ -129,33 +161,33 @@ public class DuplicateFinder {
      * Calculates checksums (CRC32) for all files in the specified directory.
      *
      * @throws java.lang.IllegalArgumentException If the File provided is not a directory, an IllegalArgumentException will be thrown.
-     * @param directory The directory whose checksums should be calculated.
+     * @param dir The directory whose checksums should be calculated.
      * @return A Multimap containing all the checksums, as well as their corresponding files.  If there are no files in the directory, an empty Multimap will be returned.
      */
-    private static Multimap<Long,File> getChecksums (File directory) {
-        return getChecksums(directory, false);
+    private Multimap<Long,File> getChecksums (File dir) {
+        return getChecksums(dir, false);
     }
 
     /**
      * Gets the names of all files in the specified directory.  If invoked recursively, will contain names of files in subdirectories.
      *
      * @throws java.lang.IllegalArgumentException If the File provided is not a directory, an IllegalArgumentException will be thrown.
-     * @param directory The directory whose file names should be listed.
+     * @param dir The directory whose file names should be listed.
      * @param recursive If true, will run recursively.  If false, will only check one level deep.
      * @return A Multimap containing all file names, as well as files with those names.  If there are no files in the directory, an empty Multimap will be returned.
      */
-    private static Multimap<String,File> getNames (File directory, boolean recursive) {
-        if (!directory.isDirectory()) {
+    private Multimap<String,File> getNames (File dir, boolean recursive) {
+        if (!dir.isDirectory()) {
             throw new IllegalArgumentException(ERROR_DIRECTORY_ARGUMENT);
         }
 
         Multimap<String,File> names = HashMultimap.create();
 
-        if (directory.listFiles() == null) {
+        if (dir.listFiles() == null) {
             return names;
         }
 
-        for (File file : directory.listFiles()) {
+        for (File file : dir.listFiles()) {
             if (!file.isDirectory()) {
                 names.put(file.getName(), file);
             } else if (file.isDirectory() && recursive == true) {
@@ -170,33 +202,33 @@ public class DuplicateFinder {
      * Gets the names of all files in the specified directory.
      *
      * @throws java.lang.IllegalArgumentException If the File provided is not a directory, an IllegalArgumentException will be thrown.
-     * @param directory The directory whose file names should be listed.
+     * @param dir The directory whose file names should be listed.
      * @return A Multimap containing all file names, as well as files with those names.  If there are no files in the directory, an empty Multimap will be returned.
      */
-    private static Multimap<String,File> getNames (File directory) {
-        return getNames(directory, false);
+    private Multimap<String,File> getNames (File dir) {
+        return getNames(dir, false);
     }
 
     /**
      * Gets the sizes of all files in the specified directory.  If invoked recursively, will contain sizes of files in subdirectories.
      *
      * @throws java.lang.IllegalArgumentException If the File provided is not a directory, an IllegalArgumentException will be thrown.
-     * @param directory The directory whose file sizes should be listed.
+     * @param dir The directory whose file sizes should be listed.
      * @param recursive If true, will run recursively.  If false, will only check one level deep.
      * @return A Multimap containing all file sizes in bytes, as well as files with those sizes.  If there are no files in the directory, an empty Multimap will be returned.
      */
-    private static Multimap<Long,File> getSizes (File directory, boolean recursive) {
-        if (!directory.isDirectory()) {
+    private Multimap<Long,File> getSizes (File dir, boolean recursive) {
+        if (!dir.isDirectory()) {
             throw new IllegalArgumentException(ERROR_DIRECTORY_ARGUMENT);
         }
 
         Multimap<Long,File> sizes = HashMultimap.create();
 
-        if (directory.listFiles() == null) {
+        if (dir.listFiles() == null) {
             return sizes;
         }
 
-        for (File file : directory.listFiles()) {
+        for (File file : dir.listFiles()) {
             if (!file.isDirectory()) {
                 sizes.put(file.length(),file);
             } else if (file.isDirectory() && recursive == true) {
@@ -211,11 +243,11 @@ public class DuplicateFinder {
      * Gets the sizes of all files in the specified directory.
      *
      * @throws java.lang.IllegalArgumentException If the File provided is not a directory, an IllegalArgumentException will be thrown.
-     * @param directory The directory whose file sizes should be listed.
+     * @param dir The directory whose file sizes should be listed.
      * @return A Multimap containing all file sizes in bytes, as well as files with those sizes.  If there are no files in the directory, an empty Multimap will be returned.
      */
-    private static Multimap<Long,File> getSizes (File directory) {
-        return getSizes(directory, false);
+    private Multimap<Long,File> getSizes (File dir) {
+        return getSizes(dir, false);
     }
 
     /**
@@ -224,7 +256,7 @@ public class DuplicateFinder {
      * @param map A Multimap<K,V> to be reduced.
      * @return The same Multimap, with all keys of type K k removed if they only correspond to one value.
      */
-    private static <K,V> Multimap<K,V> pruneMultimap (Multimap<K,V> map) {
+    private <K,V> Multimap<K,V> pruneMultimap (Multimap<K,V> map) {
         for (K k : map.keySet()) {
             if (map.get(k).size() == 2) {
                 map.remove(k, map.get(k));
@@ -239,7 +271,7 @@ public class DuplicateFinder {
      * @param map A Multimap with keys of type K and values of type File.  Expected parameters are Long and String.  Each key has multiple Files as values, such that those Files are all duplicates of each other, and no other value set contains any of those Files.
      * @return A Multimap containing all files that have duplicates as keys.  For each key, the files that are duplicates of that key are its values.
      */
-    private static <K> Multimap<File,File> translateMultimap (Multimap<K,File> map) {
+    private <K> Multimap<File,File> translateMultimap (Multimap<K,File> map) {
         Multimap<File,File> duplicateMap = HashMultimap.create();
 
         if (map.isEmpty()) {
